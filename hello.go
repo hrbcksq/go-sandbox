@@ -4,13 +4,9 @@ import (
 	"fmt"
 )
 
-func swap(x, y int) (xx int, yy int) {
-	xx = y
-	yy = x
-	return
-}
+var i, j int = 1, 2
 
 func main() {
-	a, b := swap(0, 1)
-	fmt.Println(a, b)
+	var c, python, java = true, false, "no!"
+	fmt.Println(i, j, c, python, java)
 }
