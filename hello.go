@@ -4,16 +4,15 @@ import (
 	"fmt"
 )
 
+// Constants can be character, string, boolean, or numeric values.
+// Constants cannot be declared using the := syntax.
+const Pi = 3.14
+
 func main() {
-	var i int
-	j := i // j is an int
+	const World = "Мир"
+	fmt.Println("Hello", World)
+	fmt.Println("Happy", Pi, "Day")
 
-	// i := 42           // int
-	f := 3.142        // float64
-	g := 0.886 + 0.5i // complex128
-
-	// fmt.Printf("%T %v", i, f, g)
-	fmt.Printf("Value: %v Type: %T\n", j, j)
-	fmt.Printf("Value: %v Type: %T\n", f, f)
-	fmt.Printf("Value: %v Type: %T\n", g, g)
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
 }
