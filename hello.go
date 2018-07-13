@@ -11,5 +11,5 @@ func main() {
 	var p uintptr
 	var r rune
 	fmt.Printf("%v %v %v %q %v %v %v\n", i, f, b, s, c, p, r)
-	// 0 0 false ""
+	// 0 0 false "" (0+0i) 0 0
 }
