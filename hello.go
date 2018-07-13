@@ -4,8 +4,10 @@ import (
 	"fmt"
 )
 
-func swap(x, y int) (int, int) {
-	return y, x
+func swap(x, y int) (xx int, yy int) {
+	xx = y
+	yy = x
+	return
 }
 
 func main() {
