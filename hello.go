@@ -4,10 +4,11 @@ import (
 	"fmt"
 )
 
-func add(x, y int) int {
-	return x + y
+func swap(x, y int) (int, int) {
+	return y, x
 }
 
 func main() {
-	fmt.Println(add(42, 13))
+	a, b := swap(0, 1)
+	fmt.Println(a, b)
 }
