@@ -2,15 +2,17 @@ package main
 
 import (
 	"fmt"
+	"math/cmplx"
+)
+
+var (
+	boolean bool       = false
+	MaxInt  uint64     = 1<<64 - 1
+	z       complex128 = cmplx.Sqrt(-5 + 12i)
 )
 
 func main() {
-	var i, j int = 1, 2
-	// the := short assignment statement can be used in place of a var declaration with implicit type
-	k := 3
-	c, python, java := true, false, "no!"
-
-	fmt.Println(i, j, c, python, java)
+	fmt.Printf("Type: %T Value: %v\n", boolean, boolean)
+	fmt.Printf("Type: %T Value: %v\n", MaxInt, MaxInt)
+	fmt.Printf("Type: %T Value: %v\n", z, z)
 }
-
-// Outside a function, every statement begins with a keyword (var, func, and so on) and so the := construct is not available.
