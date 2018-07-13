@@ -1,15 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	var i int
-	var f float64
-	var b bool
-	var s string
-	var c complex64
-	var p uintptr
-	var r rune
-	fmt.Printf("%v %v %v %q %v %v %v\n", i, f, b, s, c, p, r)
-	// 0 0 false "" (0+0i) 0 0
+	var x, y int = 3, 4
+	var f float64 = math.Sqrt(float64(x*x + y*y))
+	var z uint = uint(f)
+	fmt.Println(x, y, z)
 }
+
+// Some numeric conversions
+// var i int = 42
+// var f float64 = float64(i)
+// var u uint = uint(f)
+
+// more simply
+// i := 42
+// f := float64(i)
+// u := uint(f)
