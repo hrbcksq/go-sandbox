@@ -1,50 +1,29 @@
 package main
 
-import (
-	"fmt"
-	"io"
-	"os"
-)
-
-func CopyFile(dstName, srcName string) (written int64, err error) {
-	src, err := os.Open(srcName)
-	if err != nil {
-		return
-	}
-	defer src.Close()
-	dst, err := os.Create(dstName)
-	if err != nil {
-		return
-	}
-	defer dst.Close()
-	return io.Copy(dst, src)
-}
-
-// A deferred function's arguments are evaluated when the defer statement is evaluated.
-func def() {
-	i := 0
-	defer fmt.Println("Defer function argumets are evalueated when the defer statement is evaluated: %v", i)
-	i++
-	return
-}
-
-// Deferred function calls are executed in Last In First Out order after the surrounding function returns.
-func counting() {
-	defer fmt.Println()
-	for index := 0; index < 5; index++ {
-		defer fmt.Print(index)
-	}
-	defer fmt.Print("The counting function result is: ")
-}
-
-// Deferred functions may read and assign to the returning function's named return values.
-func mutateNamedReturn() (i int) {
-	defer func() { i++ }() // Anonymous function example
-	return 1
-}
+import "fmt"
 
 func main() {
-	counting() // defer calls 43210
-	def()
-	fmt.Printf("Defer named return values changes: %v", mutateNamedReturn())
+	f()
+	fmt.Println("Returned normally from f.")
+}
+
+func f() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in f", r)
+		}
+	}()
+	fmt.Println("Calling g.")
+	g(0)
+	fmt.Println("Returned normally from g.")
+}
+
+func g(i int) {
+	if i > 3 {
+		fmt.Println("Panicking!")
+		panic(fmt.Sprintf("%v", i))
+	}
+	defer fmt.Println("Defer in g", i)
+	fmt.Println("Printing in g", i)
+	g(i + 1)
 }
