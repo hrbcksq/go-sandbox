@@ -8,9 +8,10 @@ import (
 func pow(x, n, lim float64) float64 {
 	if v := math.Pow(x, n); v < lim {
 		return v
+	} else {
+		fmt.Printf("%g >= %g\n", v, lim)
 	}
-	// Variables declared by the statement are only in scope until the end of the if.
-	// fmt.Println(v)
+	// can't use v here, though
 	return lim
 }
 
