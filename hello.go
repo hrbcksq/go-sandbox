@@ -5,18 +5,18 @@ import (
 	"math"
 )
 
-func sqrt(x float64) string {
-	var result string
-	if x < 0 {
-		result = fmt.Sprint(complex(0, math.Sqrt(-x)))
-	} else {
-		result = fmt.Sprint(math.Sqrt(x))
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
 	}
-	return result
+	// Variables declared by the statement are only in scope until the end of the if.
+	// fmt.Println(v)
+	return lim
 }
 
 func main() {
-	sqrt1 := sqrt(40)
-	sqrt2 := sqrt(-2)
-	fmt.Println(sqrt1, sqrt2)
+	fmt.Println(
+		pow(3, 2, 10),
+		pow(3, 3, 20),
+	)
 }
