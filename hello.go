@@ -5,19 +5,24 @@ import (
 	"math"
 )
 
-func pow(x, n, lim float64) float64 {
-	if v := math.Pow(x, n); v < lim {
-		return v
-	} else {
-		fmt.Printf("%g >= %g\n", v, lim)
+// Sqrt is the custom function
+func Sqrt(x float64) float64 {
+	epsilon := 1e-160
+	z := 1.0
+	for prev := 0.0; math.Abs(z-prev) > epsilon; {
+		prev = z
+		for index := 0; index < 10; index++ {
+			z -= (z*z - x) / (2 * z)
+		}
+		fmt.Println(z)
 	}
-	// can't use v here, though
-	return lim
+
+	return z
 }
 
 func main() {
-	fmt.Println(
-		pow(3, 2, 10),
-		pow(3, 3, 20),
-	)
+	origin := 40.0
+	result := Sqrt(origin)
+	diff := math.Abs(math.Pow(result, 2) - origin)
+	fmt.Printf("The result is: %v\nThe difference: is %v", result, diff)
 }
