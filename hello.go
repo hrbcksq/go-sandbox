@@ -6,7 +6,7 @@ import (
 
 func main() {
 	sum := 0
-	for sum < 1<<8 {
+	for sum < 1e3 {
 		sum += 1
 	}
 	fmt.Println(sum)
